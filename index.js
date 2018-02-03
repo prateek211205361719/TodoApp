@@ -54,6 +54,25 @@ app.post('/todos',  async (req, res) => {
     }
 });
 
+app.delete('/todos/:id', async (req, res) => {
+    var id = req.params.id;
+    if(!ObjectID.isValid(id)){
+        res.status(404).send();
+    }
+    try{
+        var deleteTod = await Todo.findByIdAndRemove(id);
+        console.log(deleteTod);
+        if(!deleteTod){
+            res.status(404).send();
+        }
+        res.send(deleteTod);
+    }catch(e){
+        res.status(404).send();
+    }
+
+
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log('---------running--------');
