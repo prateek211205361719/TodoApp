@@ -1,5 +1,5 @@
 
 
 module.exports = {
-    mongoURL: 'sanu211205'
+    mongoURL: process.env.MONGO_URI
  }
