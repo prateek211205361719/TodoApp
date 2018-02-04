@@ -13,7 +13,7 @@ mongoose.connect(keys.mongoURL);
 
 const app = express();
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get('/todos', async (req, res) => {
